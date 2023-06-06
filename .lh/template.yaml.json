@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1686081472160,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1686082589306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,4 +14,18 @@\n       Handler: app.lambda_handler\r\n       Runtime: python3.9\r\n       Architectures:\r\n       - x86_64\r\n+      \r\n+ S3UploadBucket:\r\n+    Type: AWS::S3::Bucket\r\n+    Properties:\r\n+      CorsConfiguration:\r\n+        CorsRules:\r\n+        - AllowedHeaders:\r\n+            - \"*\"\r\n+          AllowedMethods:\r\n+            - GET\r\n+            - PUT\r\n+            - HEAD\r\n+          AllowedOrigins:\r\n+            - \"*\"\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1686081472160,

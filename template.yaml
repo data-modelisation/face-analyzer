@@ -15,3 +15,17 @@ Resources:
       Runtime: python3.9
       Architectures:
       - x86_64
+      
+ S3UploadBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      CorsConfiguration:
+        CorsRules:
+        - AllowedHeaders:
+            - "*"
+          AllowedMethods:
+            - GET
+            - PUT
+            - HEAD
+          AllowedOrigins:
+            - "*"
