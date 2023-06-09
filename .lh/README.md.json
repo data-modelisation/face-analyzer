@@ -1,0 +1,22 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1686317273287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1686317301173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,13 +34,12 @@\n sam deploy --guided\r\n ```\r\n This command will package and deploy application to AWS.\r\n \r\n-## Overview\r\n \r\n-\r\n ## The next steps \r\n  - add tests\r\n  - improve interface \r\n+ \r\n \r\n      \r\n \r\n"
+                }
+            ],
+            "date": 1686317273287,
+            "name": "Commit-0",
+            "content": "# Face-analyzer\r\n\r\n## Presentation \r\n\r\nThis repository contains the code of the  serverless image recognition application based on AWS services : Amazon S3, AWS Lambda, and Amazon Rekognition. \r\n\r\nThis application allow users to upload image, analyze them, and provide insights about the fealing chart of the personne  the image.\r\n\r\nThis project was developed with the aim of enhancing understanding of the architecture of AWS services.\r\n\r\n## Application\r\nThis project contains source code and supporting files for a serverless application that can be deployed with the SAM CLI.\r\n\r\nIt includes the following files and folders.\r\n\r\n- callFaceRecognition - Code for the application's Lambda function.\r\n- getSignedUrl - Code for the application's Lambda function.\r\n- frontend - Code for the application interface\r\n\r\nThe application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. \r\n\r\nA project-level configuration and default parameters are stored in the `samconfig.toml`. \r\n\r\n## Requirements\r\n* AWS CLI already configured with Administrator permission\r\n* AWS SAM CLI \r\n* NodeJS 16.x \r\n\r\n## Deploy the application\r\nTo deploy the application for the first time, run the following in your shell:\r\n```\r\ngit clone ...\r\ncd  face-analyzer\r\nsam deploy --guided\r\n```\r\nThis command will package and deploy application to AWS.\r\n\r\n## Overview\r\n\r\n\r\n## The next steps \r\n - add tests\r\n - improve interface \r\n\r\n     \r\n\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "callFaceRecognition/app.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1686084187211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1686084187211,
+            "name": "Commit-0",
+            "content": "import json\r\nimport boto3\r\n# import requests\r\n\r\n\r\ndef lambda_handler(event, context):\r\n    \"\"\"Sample pure Lambda function\r\n\r\n    Parameters\r\n    ----------\r\n    event: dict, required\r\n        API Gateway Lambda Proxy Input Format\r\n\r\n        Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format\r\n\r\n    context: object, required\r\n        Lambda Context runtime methods and attributes\r\n\r\n        Context doc: https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html\r\n\r\n    Returns\r\n    ------\r\n    API Gateway Lambda Proxy Output Format: dict\r\n\r\n        Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html\r\n    \"\"\"\r\n\r\n    # try:\r\n    #     ip = requests.get(\"http://checkip.amazonaws.com/\")\r\n    # except requests.RequestException as e:\r\n    #     # Send some context about this error to Lambda Logs\r\n    #     print(e)\r\n\r\n    #     raise e\r\n\r\n    # Initialize the Amazon Rekognition client\r\n    rekognition = boto3.client('rekognition')\r\n\r\n    # Specify the S3 bucket and image for face detection\r\n    s3_bucket = event['Records'][0]['s3']['bucket']['name']\r\n    image_name = event['Records'][0]['s3']['object']['key']\r\n   \r\n    # Perform face detection\r\n    response = rekognition.detect_faces(\r\n        Image={\r\n            'S3Object': {\r\n                'Bucket': s3_bucket,\r\n                'Name': image_name\r\n            }\r\n        },\r\n        Attributes=['ALL']\r\n    )\r\n    \r\n    # Process the response and extract face details\r\n    # (bounding box, age, gender, emotions, etc.) \r\n    # Return the detected face details as the Lambda function output\r\n    return response['FaceDetails']\r\n\r\n    # return {\r\n    #     \"statusCode\": 200,\r\n    #     \"body\": json.dumps({\r\n    #         \"message\": \"hello world\",\r\n    #         # \"location\": ip.text.replace(\"\\n\", \"\")\r\n    #     }),\r\n    # }\r\n"
+        }
+    ]
+}
