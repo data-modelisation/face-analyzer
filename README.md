@@ -1,5 +1,5 @@
 # Face-analyzer
-
+![alt Application Cover](images/ApplicationCover.jpg)
 ## Presentation 
 
 This repository contains the code of the  serverless image recognition application based on AWS services : Amazon S3, AWS Lambda, and Amazon Rekognition. 
@@ -44,7 +44,7 @@ Open this file.
 const API_ENDPOINT_UPLOAD = 'https://....execute-api.us-east-1.amazonaws.com/uploads'   
 const API_ENDPOINT_FACE_ANALYZE = 'https://.....execute-api.us-east-1.amazonaws.com/analyze' 
 ```
-## Application 
+## Interface 
 
 First page : 
 

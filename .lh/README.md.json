@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1686317273287,
@@ -16,6 +16,10 @@
                 {
                     "date": 1686422444495,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,15 +28,21 @@\n \r\n ## Deploy the application\r\n To deploy the application for the first time, run the following in your shell:\r\n ```\r\n-git clone ...\r\n+git clone <this project>\r\n cd  face-analyzer\r\n sam deploy --guided\r\n ```\r\n This command will package and deploy application to AWS.\r\n \r\n+Replace API url in file `frontend/index.html` by yours.      \r\n \r\n+```\r\n+const API_ENDPOINT_UPLOAD = 'https://....execute-api.us-east-1.amazonaws.com/uploads'   \r\n+const API_ENDPOINT_FACE_ANALYZE = 'https://.....execute-api.us-east-1.amazonaws.com/analyze' \r\n+```\r\n+\r\n ## The next steps \r\n  - add tests\r\n  - improve interface \r\n  \r\n"
+                },
+                {
+                    "date": 1686775100562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,18 +34,34 @@\n sam deploy --guided\r\n ```\r\n This command will package and deploy application to AWS.\r\n \r\n-Replace API url in file `frontend/index.html` by yours.      \r\n+Replace API url in file `frontend/index.html` by yours.    \r\n \r\n+Upload the file `frontend/index.html` to  s3 with grant public-read access. \r\n+Open this file. \r\n+\r\n ```\r\n const API_ENDPOINT_UPLOAD = 'https://....execute-api.us-east-1.amazonaws.com/uploads'   \r\n const API_ENDPOINT_FACE_ANALYZE = 'https://.....execute-api.us-east-1.amazonaws.com/analyze' \r\n ```\r\n+## Application \r\n \r\n-## The next steps \r\n- - add tests\r\n- - improve interface \r\n+First page : \r\n+\r\n+![alt First page of the application](images/ApplicationScreenshot1.png)\r\n+\r\n+Load and analyse image :\r\n+![alt Load and analyse image](images/ApplicationScreenshot2.png)\r\n+\r\n+Upload image to S3 :\r\n+![alt Upload image to S3](images/ApplicationScreenshot3.png)\r\n+\r\n+Uploaded image :\r\n+![alt Uploaded image to S3](images/ApplicationScreenshot4.png)\r\n+\r\n+\r\n+\r\n  \r\n \r\n      \r\n \r\n"
                 }
             ],
             "date": 1686317273287,
