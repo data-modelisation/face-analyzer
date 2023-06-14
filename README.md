@@ -35,16 +35,32 @@ sam deploy --guided
 ```
 This command will package and deploy application to AWS.
 
-Replace API url in file `frontend/index.html` by yours.      
+Replace API url in file `frontend/index.html` by yours.    
+
+Upload the file `frontend/index.html` to  s3 with grant public-read access. 
+Open this file. 
 
 ```
 const API_ENDPOINT_UPLOAD = 'https://....execute-api.us-east-1.amazonaws.com/uploads'   
 const API_ENDPOINT_FACE_ANALYZE = 'https://.....execute-api.us-east-1.amazonaws.com/analyze' 
 ```
+## Application 
 
-## The next steps 
- - add tests
- - improve interface 
+First page : 
+
+![alt First page of the application](images/ApplicationScreenshot1.png)
+
+Load and analyse image :
+![alt Load and analyse image](images/ApplicationScreenshot2.png)
+
+Upload image to S3 :
+![alt Upload image to S3](images/ApplicationScreenshot3.png)
+
+Uploaded image :
+![alt Uploaded image to S3](images/ApplicationScreenshot4.png)
+
+
+
  
 
      
