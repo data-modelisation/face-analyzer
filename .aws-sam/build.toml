@@ -15,7 +15,7 @@ codeuri = "C:\\Users\\otols\\Desktop\\sam_face_analyzer\\face-analyzer\\callFace
 runtime = "nodejs16.x"
 architecture = "x86_64"
 handler = "app.handler"
-manifest_hash = "f48b139fcb1c7072b0bd86c3893d9539"
+manifest_hash = "a907b3a50d11026a9a5103c7c7770be8"
 packagetype = "Zip"
 functions = ["CallFaceRecognitionFunction"]
 
