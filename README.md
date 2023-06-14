@@ -29,12 +29,18 @@ A project-level configuration and default parameters are stored in the `samconfi
 ## Deploy the application
 To deploy the application for the first time, run the following in your shell:
 ```
-git clone ...
+git clone <this project>
 cd  face-analyzer
 sam deploy --guided
 ```
 This command will package and deploy application to AWS.
 
+Replace API url in file `frontend/index.html` by yours.      
+
+```
+const API_ENDPOINT_UPLOAD = 'https://....execute-api.us-east-1.amazonaws.com/uploads'   
+const API_ENDPOINT_FACE_ANALYZE = 'https://.....execute-api.us-east-1.amazonaws.com/analyze' 
+```
 
 ## The next steps 
  - add tests
