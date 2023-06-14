@@ -7,18 +7,23 @@
   </head>
   <body>
     <div id="app">
-      <h1>S3 Uploader Test</h1>
-  
+      <h1>Face analyzer and S3 Uploader</h1>
       <div v-if="!image">
         <h2>Select an image</h2>
         <input type="file" @change="onFileChange" accept="image/jpeg">
       </div>
       <div v-else>
         <img :src="image" />
-        <h2 v-if="faceDetails">Emotions :</h2>
-        <p v-for="emotion in faceDetails.emotions" >
-          <span>{{ emotion.type }} : {{ emotion.confidence.toFixed(2) }}</span>
-        </p>
+        <div v-if="faceDetails">
+          <div v-for="(index, face) in faceDetails" :key="index">
+            <h2>Emotions of Face {{ index + 1 }}:</h2>
+            <ul>
+              <li v-for="emotion in face.Emotions" :key="emotion.Type">
+                {{ emotion.Type }}({{ emotion.Confidence.toFixed(2) }}%)
+              </li>
+            </ul>
+          </div>
+        </div>
         <button v-if="!uploadURL" @click="removeImage">Remove image</button>
         <button v-if="!uploadURL" @click="uploadImage">Upload image</button>
       </div>
@@ -28,7 +33,7 @@
     <script>
       const MAX_IMAGE_SIZE = 1000000 
       const API_ENDPOINT_UPLOAD = 'https://2jpun75gp1.execute-api.us-east-1.amazonaws.com/uploads' /* ENTER YOUR ENDPOINT HERE */  
-      const API_ENDPOINT_FACE_ANALYZE = 'https://2jpun75gp1.execute-api.us-east-1.amazonaws.com/analyze'
+      const API_ENDPOINT_FACE_ANALYZE = 'https://2jpun75gp1.execute-api.us-east-1.amazonaws.com/analyze' /* ENTER YOUR ENDPOINT HERE */ 
       new Vue({
         el: "#app",
         data: {
@@ -42,9 +47,10 @@
             if (!files.length) return
             this.createImage(files[0])     
             .then(() => {
-              // Image creation successful
-              console.log('Image created:', this.image);
               return this.analyseImage(); 
+            })
+            .catch((error) => {
+              alert(error);
             })
           },
           createImage (file) {
@@ -67,7 +73,6 @@
             });          
           },
           removeImage: function (e) {
-            console.log('Remove clicked')
             this.image = ''
           },
           uploadImage: async function (e) {
@@ -77,8 +82,6 @@
               method: 'GET',
               url: API_ENDPOINT_UPLOAD
             })
-            console.log('Response: ', response)
-            console.log('Uploading: ', this.image)
             let binary = atob(this.image.split(',')[1])
             let array = []
             for (var i = 0; i < binary.length; i++) {
@@ -90,12 +93,10 @@
               method: 'PUT',
               body: blobData
             })
-            console.log('Result: ', result)
             // Final URL for the user doesn't need the query string params
             this.uploadURL = response.uploadURL.split('?')[0]
           },
           analyseImage: function (e) {
-            console.log('Analyze start')
             let binary = atob(this.image.split(',')[1])
             let array = []
             for (var i = 0; i < binary.length; i++) {
@@ -109,7 +110,7 @@
             .then(response => response.json())
             .then(data => {
               console.log(data);
-              this.faceDetails = data[0];
+              this.faceDetails = data; 
             })
           }
         }
@@ -142,11 +143,19 @@
       a {
         color: #42b983;
       }
-      img {
+      img { 
         width: 30%;
         margin: auto;
         display: block;
         margin-bottom: 10px;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+      }
+      li {
+        margin-bottom: 5px;
       }
     </style>
   </body>
